@@ -3,6 +3,8 @@ using Domain.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 using Persistence.Repositories;
+using Services;
+using ServicesAbstractions;
 using System;
 
 namespace Order_Management_System
@@ -28,6 +30,12 @@ namespace Order_Management_System
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+            builder.Services.AddScoped<IOrderService, OrderService>();
+            builder.Services.AddScoped<CreditCardPaymentService>();
+            builder.Services.AddScoped<PayPalPaymentService>();
+            builder.Services.AddScoped<IPaymentServiceFactory, PaymentServiceFactory>();
+
 
 
             var app = builder.Build();
