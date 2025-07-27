@@ -1,4 +1,10 @@
 
+using Domain.Contracts;
+using Microsoft.EntityFrameworkCore;
+using Persistence.Data;
+using Persistence.Repositories;
+using System;
+
 namespace Order_Management_System
 {
     public class Program
@@ -14,6 +20,16 @@ namespace Order_Management_System
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddDbContext<OrderManagmentDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -26,7 +42,6 @@ namespace Order_Management_System
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
