@@ -1,4 +1,8 @@
 
+using Microsoft.EntityFrameworkCore;
+using Persistence.Data;
+using System;
+
 namespace Order_Management_System
 {
     public class Program
@@ -14,6 +18,9 @@ namespace Order_Management_System
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddDbContext<OrderManagmentDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -26,7 +33,6 @@ namespace Order_Management_System
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
