@@ -1,9 +1,16 @@
 
 using Domain.Contracts;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Persistence.Data;
 using Persistence.Repositories;
+using Presentation;
+using Services;
+using ServicesAbstractions;
 using System;
+using System.Text;
+
 
 namespace Order_Management_System
 {
@@ -28,6 +35,16 @@ namespace Order_Management_System
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+            builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+
+
+            builder.Services.AddScoped<IOrderService, OrderService>();
+            builder.Services.AddScoped<CreditCardPaymentService>();
+            builder.Services.AddScoped<PayPalPaymentService>();
+            builder.Services.AddScoped<IPaymentServiceFactory, PaymentServiceFactory>();
+
+            builder.Services.AddAuthorization();
+
 
 
             var app = builder.Build();
@@ -40,6 +57,8 @@ namespace Order_Management_System
             }
 
             app.UseHttpsRedirection();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

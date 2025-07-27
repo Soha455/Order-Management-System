@@ -1,0 +1,10 @@
+﻿using System;
+
+namespace Core.Enums
+{
+    public enum PaymentMethod
+    {
+        CreditCard,
+        PayPal
+    }
+}

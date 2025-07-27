@@ -9,6 +9,7 @@ namespace Domain.Contracts
 {
     public interface IOrderRepository : IGenericRepository<Order>
     {
-        Task<IEnumerable<Order>> GetOrdersByCustomerAsync(int customerId);
+        Task<Order?> GetOrderWithDetailsAsync(int orderId);
+        Task<IEnumerable<Order>> GetOrdersByCustomerIdAsync(int customerId);
     }
 }

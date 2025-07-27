@@ -12,9 +12,23 @@ namespace Persistence.Repositories
 {
     public class OrderRepository : GenericRepository<Order>, IOrderRepository
     {
-        public OrderRepository(OrderManagmentDbContext context) : base(context) { }
+        private readonly OrderManagmentDbContext _context;
 
-        public async Task<IEnumerable<Order>> GetOrdersByCustomerAsync(int customerId)
+        public OrderRepository(OrderManagmentDbContext context) : base(context)
+        {
+            _context = context;
+        }
+
+        public async Task<Order?> GetOrderWithDetailsAsync(int orderId)
+        {
+            return await _context.Orders
+                .Include(o => o.OrderItems)
+                .ThenInclude(oi => oi.Product)
+                .Include(o => o.Customer)
+                .FirstOrDefaultAsync(o => o.Id == orderId);
+        }
+
+        public async Task<IEnumerable<Order>> GetOrdersByCustomerIdAsync(int customerId)
         {
             return await _context.Orders
                 .Where(o => o.CustomerId == customerId)

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order Management System", "Order Management System\Order Management System.csproj", "{DB4F6C30-75F3-4F0A-B39C-4B2D0AF316C3}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Infrastructure\Persistence\Persistence.csproj", "{F80FE2A9-7B7D-4D69-A16A-F2392010FD22}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{2C1CE743-21F9-4E83-802B-E793B40FA343}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "settings", "settings", "{763CC530-C0CA-467E-ADB3-7BC32C4366B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,5 +67,6 @@ Global
 		{EBB084B5-0EE7-4F4E-A7F2-98E89DC0A665} = {2A9F2DC6-3CD5-4EB6-9591-5729D0C32D88}
 		{2267CDD8-251E-4711-BA6F-B3C39635B036} = {FEEB56F9-EB7F-4BB8-9F25-382E74FF4690}
 		{F80FE2A9-7B7D-4D69-A16A-F2392010FD22} = {FEEB56F9-EB7F-4BB8-9F25-382E74FF4690}
+		{763CC530-C0CA-467E-ADB3-7BC32C4366B5} = {2A9F2DC6-3CD5-4EB6-9591-5729D0C32D88}
 	EndGlobalSection
 EndGlobal
