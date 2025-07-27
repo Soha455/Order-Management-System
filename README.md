@@ -1,6 +1,7 @@
-# Order Management System
+## Order Management System
 This project is a basic Order Management System built using ASP.NET Core Web API. It is designed to manage customers, products, orders, invoices, and users with clean architecture principles, following a layered structure that separates concerns between API, Application, Domain, and Infrastructure.
----
+
+
 ✨ Key Features
 - Customer and Product management
 - Create and update Orders with multiple Order Items
